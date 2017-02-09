@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="csb">
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="csb.css">
+	<link href='https://fonts.googleapis.com/css?family=Clicker+Script' rel='stylesheet' type='text/css'>
+
+</head>
+	<body ng-controller="weddingPriceController">
+	<div class="container">
+		<div class="form-group row">
+			How many guests?
+			<input type="number" ng-change="findSum()" ng-model="guestCount" placeholder="..." id="guests">
+		</div>
+		<div class="form-group row">
+			Buffet Selected: 
+			<div>
+				<button ng-click="selectBuffet('Countrt Springs Buffet 2')" class="btn btn-info">CS Buffet 2</button>
+				<button ng-click="selectBuffet('Grand Buffet')" class="btn btn-info">Grand Buffet</button>
+			</div>
+			<h1 id="foodCost">{{buffet}}</h1>
+		</div>
+		<div class="form-group row">
+			Food Cost:
+			<div>
+				<button ng-click="selectPlate(2)" class="btn btn-info">2 plates</button>
+				<button ng-click="selectPlate(3)" class="btn btn-info">3 plates</button>
+			</div>
+			 <h1 ng-show="plate && entree">{{entree}} | Per person: ${{plate}} | Total: ${{foodPrice}}</h1>
+		</div>
+		<div class="form-group row">
+			Drinks Cost: <span id="drinksCost"></span>
+				<div>
+					<span ng-repeat="drink in drinks">
+						<button ng-click="getPriceForDrinks(drink)" class="btn btn-info">{{drink.name}}</button>
+					</span>
+				</div>
+				<h1 ng-show="drinkName">{{drinkName}} | Per Person: ${{singleDrinkPrice}} | Total: ${{drinkPrice}}</h1>
+			<div>
+			</div>
+		</div>
+		<div class="row">
+			Total: 
+			<span ng-show="isReady" ng-model="totalCost" id="totalCost">{{totalCost}}</span>
+		</div>
+		<div>
+			<button ng-click="re()" class="btn btn-danger re">Redo!</button>
+		</div>
+	</div>
+		
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script type="text/javascript" src="csb.js"></script>
+</html>

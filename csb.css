@@ -1,0 +1,28 @@
+div {
+	padding: 3px;
+}
+
+#foodCost, #drinksCost {
+	font-size: 40px;
+}
+
+#totalCost {
+	color: red;
+	font-weight: bold;
+	font-size: 105px;
+	font-family: 'Clicker Script', cursive;
+}
+
+#guests{
+	border: 2px solid lightgreen;
+	border-radius: 4px;
+	height: 80px;
+	width: 250px;
+	font-size: 40px;
+}
+
+.re{
+	bottom: 10px;
+	right: 10px;
+	position: absolute;
+}
