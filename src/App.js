@@ -1,13 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 const App = () => {
 	return {
-		...Component.prototype,
 
 		render () {
 			return (
-				<div id='app'>
-					hello world
+				<div className='row'>
+					<h1>hello world</h1>
+					<input type='text' className='form-control'/>
+					<button type='button' placeholder='Testing' className='btn btn-default'>Test</button>
 				</div>
 			);
 		}

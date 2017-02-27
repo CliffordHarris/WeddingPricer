@@ -1,2 +1,3 @@
-export default (state = {}, action) => {
+export default (state = {}) => {
+	return Object.assign({}, state);
 };

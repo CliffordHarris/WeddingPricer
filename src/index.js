@@ -6,7 +6,7 @@ import reducers from './reducers';
 import {Provider} from 'react-redux';
 import defaults from './defaults';
 
-import './styles/bootstrap/css/bootstrap-theme.min.css';
+import './styles/bootstrap/css/bootstrap.min.css';
 import './styles/custom.css';
 
 const store = createStore(
@@ -18,7 +18,7 @@ let frame = Object.assign({}, store.getState());
 
 ReactDOM.render(
 	<Provider store={store} >
-		<App frame={frame} />
+		<App frame={frame}/>
 	</Provider>,
 	document.getElementById('root')
 );
