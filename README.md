@@ -6,7 +6,7 @@ WeddingPricer is in the process of being reactified for learning purposes.
 
 
 #### To Run the App
-- `git clone https://github.com/CliffordHarris/WeddingPricer.git`
+- `git clone https://github.com/CliffordHarris/WeddingPricer.git` and `cd` to the directory you cloned it to.
 
 - `yarn install`
 
