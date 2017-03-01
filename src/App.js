@@ -1,18 +1,17 @@
 import React, { PropTypes } from 'react';
+import ButtonComponent from './components/buttonComponent'
 
 const App = () => {
-	return {
-
-		render () {
-			return (
-				<div className='row'>
-					<h1>hello world</h1>
-					<input type='text' className='form-control'/>
-					<button type='button' placeholder='Testing' className='btn btn-default'>Test</button>
-				</div>
-			);
-		}
-	}
+	return (
+		<div className='row'>
+			<h1>hello world</h1>
+			<input type='text' className='form-control'/>
+			<ButtonComponent
+				onClick = test();
+				text='Hello'
+			/>
+		</div>
+	);
 };
 
 App.contextTypes = {
