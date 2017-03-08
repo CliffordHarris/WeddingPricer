@@ -1,15 +1,27 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
-const ButtonComponent = ({text}) => {
+const ButtonComponent = ({id, text, onClick}) => {
 	return (
-    <button type='button' placeholder={text} className='btn btn-default'>
+    <button
+			id={id}
+			placeholder={text}
+			className='btn btn-default'
+			onClick={onClick}
+		>
       {text}
     </button>
 	)
 };
 
+// Type checking
+const {
+	string, func
+} = React.PropTypes;
+
 ButtonComponent.contextTypes = {
-	store: PropTypes.object
+	onClick: func,
+	text: string,
+	className: string
 };
 
 export default ButtonComponent;
