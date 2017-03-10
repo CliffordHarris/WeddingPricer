@@ -1,4 +1,11 @@
 export default {
-	foo: 'testing',
-	bar: 'testing'
+	UIState:{
+		view:'main',
+	},
+	UserInput:{
+		guestCount:0,
+		buffetSelected:'',
+		foodCost:'',
+		drinksCost:''
+	}
 };

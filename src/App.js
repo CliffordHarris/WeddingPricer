@@ -1,11 +1,12 @@
 import React from 'react';
 import ButtonComponent from './components/buttonComponent';
-import handleEvent from './modules/handlers';
+// import handleEvent from './modules/handlers';
+import testSomething from './actions'
 
-const App = () => {
-	const onItemClick = (event) =>{
+const App = (store) => {
+	const onItemClick = () =>{
     // event.currentTarget.style.backgroundColor = '#000';
-		console.log(event, 'clicking');
+		console.log(store);
 	}
 	return (
 		<div className='row'>
@@ -14,12 +15,12 @@ const App = () => {
 			<ButtonComponent
 				id='testID'
 				text='Hello'
-				onClick={(event)=>onItemClick(event)}
+				onClick={(store)=>onItemClick(store)}
 			/>
 			<ButtonComponent
 				id='testID'
 				text='Another'
-				onClick={(event)=>handleEvent(event)}
+				onClick={(store)=>testSomething(store)}
 			/>
 		</div>
 	);

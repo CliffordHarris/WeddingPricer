@@ -10,15 +10,14 @@ import './styles/bootstrap/css/bootstrap.min.css';
 import './styles/custom.css';
 
 const store = createStore(
-	reducers, 
-	defaults, 
-	window.devToolsExtension && window.devToolsExtension()
+	reducers,
+	defaults
 );
-let frame = Object.assign({}, store.getState());
+let state = store.getState();
 
 ReactDOM.render(
 	<Provider store={store} >
-		<App frame={frame}/>
+		<App state={state}/>
 	</Provider>,
 	document.getElementById('root')
 );
