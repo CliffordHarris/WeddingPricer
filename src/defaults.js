@@ -1,6 +1,6 @@
 export default {
 	UIState:{
-		view:'main',
+		currentView:'MAIN'
 	},
 	UserInput:{
 		guestCount:0,

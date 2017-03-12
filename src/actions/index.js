@@ -7,6 +7,10 @@ export const initSomething = (guest) =>({
 		guest
 });
 
+export const loadSecondView = () =>({
+		type: Constants.LOAD_SECOND_VIEW
+});
+
 export const setMyNumber = (count) =>({
 		type: Constants.SET_MY_NUMBER,
 		count

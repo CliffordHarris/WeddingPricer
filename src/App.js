@@ -5,8 +5,9 @@ import ButtonComponent from './components/buttonComponent';
 import NumberInputComponent from './components/numberInputComponent';
 import * as Actions from './actions';
 
-const App = ({count, actions}) => {
+import SecondView from './containers/SecondView';
 
+const App = ({count, actions}) => {
 	// TODO: Do you even debounce brah???
 	const handleNumberChange = (event) => {
 		let num = parseInt(event.target.value, 10);
@@ -16,29 +17,75 @@ const App = ({count, actions}) => {
 			// TODO: Handle NaN
 			// alert('Please enter a number.')
 		}
-  };
+	};
 
 	// Just testing stuff
 	const someValue = 999;
 
-	return (
-		<div className='row'>
-			<h1>hello world</h1>
-			<input type='text' className='form-control'/>
-			<ButtonComponent
-				id='testID'
-				text='Testing'
-				onClick={()=>actions.initSomething(someValue)}
-			/>
-			<NumberInputComponent
-				labelText='Guest'
-				onChange={(event)=>handleNumberChange(event)}
-				value={count}
-				id='testInput'
-				inputType='number'
-			/>
-		</div>
-	);
+	return {
+
+		render() {
+			let type = this.props;
+			let view = null;
+
+			switch (type) {
+
+				case "MAIN":
+					view = <div>
+						<h1>hello world</h1>
+						<input type='text' className='form-control'/>
+						<ButtonComponent
+							id='testID'
+							text='Testing'
+							onClick={()=>actions.initSomething(someValue)}
+						/>
+						<ButtonComponent
+							id='testID'
+							text='Second View'
+							onClick={()=>actions.loadSecondView()}
+						/>
+						<NumberInputComponent
+							labelText='Guest'
+							onChange={(event)=>handleNumberChange(event)}
+							value={count}
+							id='testInput'
+							inputType='number'
+						/>
+					</div>
+					break;
+
+				case "SECOND_VIEW":
+					view = <SecondView/>
+					break;
+
+				default:
+					view = <div>
+						<h1>hello world</h1>
+						<input type='text' className='form-control'/>
+						<ButtonComponent
+							id='testID'
+							text='Testing'
+							onClick={()=>actions.initSomething(someValue)}
+						/>
+						<ButtonComponent
+							id='testID'
+							text='Second View'
+							onClick={()=>actions.loadSecondView()}
+						/>
+						<NumberInputComponent
+							labelText='Guest'
+							onChange={(event)=>handleNumberChange(event)}
+							value={count}
+							id='testInput'
+							inputType='number'
+						/>
+					</div>
+					break;
+			}
+
+			return <div className='row'> {view} </div>
+		}
+	}
 };
 
 // Type checking
