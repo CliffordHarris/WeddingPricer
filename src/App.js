@@ -6,11 +6,19 @@ import NumberInputComponent from './components/numberInputComponent';
 import * as Actions from './actions';
 
 const App = ({count, actions}) => {
-	const handleNumberChange = (e) => {
-		console.log('handleNumberChange', actions);
-    actions.setMyNumber(parseInt(e.target.value, 10));
+
+	// TODO: Do you even debounce brah???
+	const handleNumberChange = (event) => {
+		let num = parseInt(event.target.value, 10);
+		if(!isNaN(num)){
+			actions.setMyNumber(num);
+		}else{
+			// TODO: Handle NaN
+			// alert('Please enter a number.')
+		}
   };
 
+	// Just testing stuff
 	const someValue = 999;
 
 	return (
@@ -24,7 +32,7 @@ const App = ({count, actions}) => {
 			/>
 			<NumberInputComponent
 				labelText='Guest'
-				onChange={(e)=>handleNumberChange(e, actions, count)}
+				onChange={(event)=>handleNumberChange(event)}
 				value={count}
 				id='testInput'
 				inputType='number'
@@ -42,24 +50,15 @@ App.contextTypes = {
 	store: object
 };
 
-/**
- * Map the state to props.
- */
-const mapStateToProps = (state) => ({
-  ...state
-});
+// Map the state to props.
+const mapStateToProps = (state) => ({ ...state });
 
-/**
- * Map the actions to props.
- */
+// Map the actions to props.
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(Actions, dispatch)
 });
 
-/**
- * Connect the component to
- * the Redux store.
- */
+// Connect the component the Redux store.
 export default connect(
   mapStateToProps,
   mapDispatchToProps

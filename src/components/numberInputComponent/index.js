@@ -1,5 +1,7 @@
 import React from 'react';
 
+// TODO: Figure out where to put styles.
+// Seperate file within the component folder perhaps?
 const style = {
   margin: '10px 0'
 };

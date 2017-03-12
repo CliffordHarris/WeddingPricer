@@ -1,8 +1,9 @@
-import {INIT_SOMETHING, SET_MY_NUMBER} from '../actions'
+// import {INIT_SOMETHING, SET_MY_NUMBER} from '../actions'
+import Constants from '../actions/Constants';
 
 export default (state = {}, action) => {
 	switch (action.type) {
-		case INIT_SOMETHING:
+		case Constants.INIT_SOMETHING:
 			return Object.assign({}, state, {
 					UserInput: {
 						...state.UserInput,
@@ -10,7 +11,7 @@ export default (state = {}, action) => {
 					}
       });
 
-			case SET_MY_NUMBER:
+			case Constants.SET_MY_NUMBER:
 				return Object.assign({}, state, {
 						UserInput: {
 							...state.UserInput,
