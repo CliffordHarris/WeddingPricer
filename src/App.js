@@ -1,26 +1,33 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import ButtonComponent from './components/buttonComponent';
-// import handleEvent from './modules/handlers';
-import testSomething from './actions'
+import NumberInputComponent from './components/numberInputComponent';
+import * as Actions from './actions';
 
-const App = (store) => {
-	const onItemClick = () =>{
-    // event.currentTarget.style.backgroundColor = '#000';
-		console.log(store);
-	}
+const App = ({count, actions}) => {
+	const handleNumberChange = (e) => {
+		console.log('handleNumberChange', actions);
+    actions.setMyNumber(parseInt(e.target.value, 10));
+  };
+
+	const someValue = 999;
+
 	return (
 		<div className='row'>
 			<h1>hello world</h1>
 			<input type='text' className='form-control'/>
 			<ButtonComponent
 				id='testID'
-				text='Hello'
-				onClick={(store)=>onItemClick(store)}
+				text='Testing'
+				onClick={()=>actions.initSomething(someValue)}
 			/>
-			<ButtonComponent
-				id='testID'
-				text='Another'
-				onClick={(store)=>testSomething(store)}
+			<NumberInputComponent
+				labelText='Guest'
+				onChange={(e)=>handleNumberChange(e, actions, count)}
+				value={count}
+				id='testInput'
+				inputType='number'
 			/>
 		</div>
 	);
@@ -35,4 +42,25 @@ App.contextTypes = {
 	store: object
 };
 
-export default App;
+/**
+ * Map the state to props.
+ */
+const mapStateToProps = (state) => ({
+  ...state
+});
+
+/**
+ * Map the actions to props.
+ */
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(Actions, dispatch)
+});
+
+/**
+ * Connect the component to
+ * the Redux store.
+ */
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

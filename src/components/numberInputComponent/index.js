@@ -1,0 +1,32 @@
+import React from 'react';
+
+const style = {
+  margin: '10px 0'
+};
+
+const NumberInputComponent = ({labelText, onChange, count, inputType}) => {
+  return (
+    <div style={style}>
+      <label>
+        {labelText}
+        <input
+          onChange={onChange}
+          value={count}
+          type={inputType}
+          min='0'/>
+      </label>
+    </div>
+  );
+};
+
+// Type checking
+const {
+	string, func
+} = React.PropTypes;
+
+NumberInputComponent.contextTypes = {
+	onChange: func,
+	labelText: string
+};
+
+export default NumberInputComponent;
