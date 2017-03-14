@@ -12,13 +12,13 @@ const SecondView = ({actions}) => {
 		componentWillEnter (callback) {
 			console.log(callback);
 			const el = findDOMNode(this);
-			TweenMax.fromTo(el, 0.3, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
+			TweenMax.fromTo(el, 1.0, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
 		},
 
 		componentWillLeave (callback) {
 			console.log(callback);
 			const el = findDOMNode(this);
-			TweenMax.fromTo(el, 0.3, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
+			TweenMax.fromTo(el, 1.0, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
 		},
 
 		render () {

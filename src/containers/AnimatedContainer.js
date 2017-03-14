@@ -1,17 +1,12 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-// import ButtonComponent from '../components/buttonComponent';
-// import NumberInputComponent from '../components/numberInputComponent';
 import * as Actions from '../actions';
 // import TransitionGroup from 'react-addons-transition-group';
 import MainView from './MainView';
 import SecondView from './SecondView';
 
 const AnimatedContainer = ({count, actions}) => {
-
-	// Just testing stuff
-	// const someValue = 999;
 
 	return {
 

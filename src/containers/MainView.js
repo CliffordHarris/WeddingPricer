@@ -1,9 +1,13 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
-import {findDOMNode} from 'react-dom';
-import TweenMax from 'gsap';
+// import {findDOMNode} from 'react-dom';
+// import TweenMax from 'gsap';
 
 import ButtonComponent from '../components/buttonComponent';
 import NumberInputComponent from '../components/numberInputComponent';
+
+const startAnimation = (component) => {
+	console.log('my component', component);
+};
 
 const MainView = ({count, actions}) => {
 	const style = {
@@ -23,15 +27,33 @@ const MainView = ({count, actions}) => {
 
 	return{
 		componentWillEnter (callback) {
-			console.log(callback);
-			const el = findDOMNode(this);
-			TweenMax.fromTo(el, 0.3, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
+			// console.log(findDOMNode(this));
+			// console.log(callback);
+			// const el = findDOMNode(this);
+			console.log('will enter');
+			try {
+				console.log('trying componentWillEnter');
+				startAnimation(this);
+			} catch (e) {
+				console.error(e.message);
+				callback();
+			}
+			// TweenMax.fromTo(el, 1.0, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
 		},
 
 		componentWillLeave (callback) {
-			console.log(callback);
-			const el = findDOMNode(this);
-			TweenMax.fromTo(el, 0.3, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
+			console.log('will leave');
+			try {
+				console.log('trying componentWillLeave');
+				startAnimation(this);
+			} catch (e) {
+				console.error(e.message);
+				callback();
+			}
+			// console.log(findDOMNode(this));
+			// console.log(callback);
+			// const el = findDOMNode(this);
+			// TweenMax.fromTo(el, 1.0, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
 		},
 
 		render () {
