@@ -31,9 +31,6 @@ export default (state = {}, action) => {
 					});
 
 		default:
-			// viewStack = [{
-			// 	type: 'MAIN'
-			// }];
 			console.log('default state');
 			return Object.assign({}, state, {
 					UIState: {

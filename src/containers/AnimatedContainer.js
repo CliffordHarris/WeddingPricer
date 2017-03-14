@@ -1,21 +1,66 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
-import {render} from 'react-dom';
-import SecondView from './SecondView'
+import React from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+// import ButtonComponent from '../components/buttonComponent';
+// import NumberInputComponent from '../components/numberInputComponent';
+import * as Actions from '../actions';
+// import TransitionGroup from 'react-addons-transition-group';
+import MainView from './MainView';
+import SecondView from './SecondView';
 
-const AnimatedContainer = () => {
+const AnimatedContainer = ({count, actions}) => {
 
-	render(
-		// switch (type) {
-			// case 'SECOND_VIEW':
-			console.log('lol SECOND_VIEW');
-			// view = <SecondView/>;
-			// break;
-			//
-			// default:
-			// break;
+	// Just testing stuff
+	// const someValue = 999;
 
-		// }
-	);
+	return {
+
+		render() {
+			let type = this.props;
+			let view;
+
+			switch (type.UIState.currentView) {
+
+				case "MAIN":
+					console.log('main here');
+					view = <MainView count={count} actions={actions}/>
+					break;
+
+				case "SECOND_VIEW":
+				console.log('second here');
+					view = <SecondView actions={actions}/>
+					break;
+
+				default:
+				console.log('default here');
+					view = <MainView count={count} actions={actions}/>
+					break;
+			}
+
+			return <div className='row'> {view} </div>
+		}
+	}
 };
 
-export default AnimatedContainer;
+// Type checking
+const{
+		object
+} = React.PropTypes;
+
+AnimatedContainer.contextTypes = {
+	store: object
+};
+
+// Map the state to props.
+const mapStateToProps = (state) => ({ ...state });
+
+// Map the actions to props.
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(Actions, dispatch)
+});
+
+// Connect the component the Redux store.
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AnimatedContainer);
