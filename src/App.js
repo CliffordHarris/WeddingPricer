@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import ButtonComponent from './components/buttonComponent';
 import NumberInputComponent from './components/numberInputComponent';
 import * as Actions from './actions';
-
+// import TransitionGroup from 'react-addons-transition-group';
 import SecondView from './containers/SecondView';
 
 const App = ({count, actions}) => {
@@ -26,21 +26,24 @@ const App = ({count, actions}) => {
 
 		render() {
 			let type = this.props;
-			let view = null;
+			let view;
 
-			switch (type) {
+			console.log('type', type);
+
+			switch (type.UIState.currentView) {
 
 				case "MAIN":
+					console.log('main here');
 					view = <div>
 						<h1>hello world</h1>
 						<input type='text' className='form-control'/>
 						<ButtonComponent
-							id='testID'
-							text='Testing'
-							onClick={()=>actions.initSomething(someValue)}
+							id='main_view'
+							text='Main'
+							onClick={()=>actions.loadMainView()}
 						/>
 						<ButtonComponent
-							id='testID'
+							id='second_view'
 							text='Second View'
 							onClick={()=>actions.loadSecondView()}
 						/>
@@ -55,10 +58,12 @@ const App = ({count, actions}) => {
 					break;
 
 				case "SECOND_VIEW":
+				console.log('second here');
 					view = <SecondView/>
 					break;
 
 				default:
+				console.log('default here');
 					view = <div>
 						<h1>hello world</h1>
 						<input type='text' className='form-control'/>

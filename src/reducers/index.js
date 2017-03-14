@@ -6,14 +6,6 @@ export default (state = {}, action) => {
 
 	switch (action.type) {
 
-		case Constants.INIT_SOMETHING:
-			return Object.assign({}, state, {
-					UserInput: {
-						...state.UserInput,
-							guestCount: action.guest
-					}
-      });
-
 			case Constants.SET_MY_NUMBER:
 				return Object.assign({}, state, {
 						UserInput: {
@@ -21,6 +13,14 @@ export default (state = {}, action) => {
 								guestCount: action.count
 						}
 	      });
+
+				case Constants.LOAD_MAIN_VIEW:
+					return Object.assign({}, state, {
+						UIState:{
+							...state.UIState,
+							currentView: 'MAIN'
+						}
+					});
 
 				case Constants.LOAD_SECOND_VIEW:
 					return Object.assign({}, state, {

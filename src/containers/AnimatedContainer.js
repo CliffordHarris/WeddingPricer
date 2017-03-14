@@ -5,15 +5,16 @@ import SecondView from './SecondView'
 const AnimatedContainer = () => {
 
 	render(
-		switch (type) {
-			case 'SECOND_VIEW':
-			view = <SecondView/>;
-			break;
+		// switch (type) {
+			// case 'SECOND_VIEW':
+			console.log('lol SECOND_VIEW');
+			// view = <SecondView/>;
+			// break;
+			//
+			// default:
+			// break;
 
-			default:
-			break;
-
-		}
+		// }
 	);
 };
 
