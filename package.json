@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "gsap": "^1.19.1",
-    "react-addons-transition-group": "^15.4.2",
+    "react-flip-move": "^2.9.1",
+    "react-motion": "^0.4.7",
     "react-scripts": "0.8.1"
   },
   "dependencies": {
