@@ -1,24 +1,22 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
-// import {findDOMNode} from 'react-dom';
-// import TweenMax from 'gsap';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as Actions from '../actions';
 
 import ButtonComponent from '../components/buttonComponent';
 import NumberInputComponent from '../components/numberInputComponent';
 
-const startAnimation = (component) => {
-	console.log('my component', component);
-};
-
-const MainView = ({count, actions}) => {
+const MainView = ({actions}) => {
+	console.log('hello actions', actions);
 	const style = {
 		background: 'gray'
 	};
 
 	// TODO: Do you even debounce brah???
 	const handleNumberChange = (event) => {
-		let num = parseInt(event.target.value, 10);
-		if(!isNaN(num)){
-			actions.setMyNumber(num);
+		let guestCount = parseInt(event.target.value, 10);
+		if(!isNaN(guestCount)){
+			actions.setMyNumber(guestCount);
 		}else{
 			// TODO: Handle NaN
 			// alert('Please enter a number.')
@@ -26,35 +24,34 @@ const MainView = ({count, actions}) => {
 	};
 
 	return{
-		componentWillEnter (callback) {
-			// console.log(findDOMNode(this));
-			// console.log(callback);
-			// const el = findDOMNode(this);
-			console.log('will enter');
-			try {
-				console.log('trying componentWillEnter');
-				startAnimation(this);
-			} catch (e) {
-				console.error(e.message);
-				callback();
-			}
-			// TweenMax.fromTo(el, 1.0, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
-		},
+		componentWillMount() {
+      console.log('MainView Component WILL MOUNT!')
+   },
 
-		componentWillLeave (callback) {
-			console.log('will leave');
-			try {
-				console.log('trying componentWillLeave');
-				startAnimation(this);
-			} catch (e) {
-				console.error(e.message);
-				callback();
-			}
-			// console.log(findDOMNode(this));
-			// console.log(callback);
-			// const el = findDOMNode(this);
-			// TweenMax.fromTo(el, 1.0, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
-		},
+   componentDidMount() {
+      console.log('MainView Component DID MOUNT!')
+   },
+
+   componentWillReceiveProps(newProps) {
+      console.log('MainView Component WILL RECIEVE PROPS!')
+   },
+
+   shouldComponentUpdate(newProps, newState) {
+		 console.log('MainView shouldComponentUpdate!')
+      return true;
+   },
+
+   componentWillUpdate(nextProps, nextState) {
+      console.log('MainView Component WILL UPDATE!');
+   },
+
+   componentDidUpdate(prevProps, prevState) {
+      console.log('MainView Component DID UPDATE!')
+   },
+
+   componentWillUnmount() {
+      console.log('MainView Component WILL UNMOUNT!')
+   },
 
 		render () {
 			return (
@@ -62,21 +59,44 @@ const MainView = ({count, actions}) => {
 					<h1>Main View</h1>
 					<ButtonComponent
 						id='main_view'
-						text='Load Main'
+						buttonText='Load Main'
 						onClick={()=>actions.loadSecondView()}
 					/>
 					<NumberInputComponent
 						labelText='Guest'
 						onChange={(event)=>handleNumberChange(event)}
-						value={count}
 						id='testInput'
 						inputType='number'
 					/>
 				</div>
-
 			)
 		}
 	}
 };
 
-export default MainView;
+// Type checking
+const{
+		object, func
+} = React.PropTypes;
+
+MainView.contextTypes = {
+	store: object
+};
+
+MainView.PropTypes = {
+	actions: func
+};
+
+// Map the state to props.
+const mapStateToProps = (state) => ({ ...state });
+
+// Map the actions to props.
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(Actions, dispatch)
+});
+
+// Connect the component the Redux store.
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainView);

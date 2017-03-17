@@ -9,13 +9,13 @@ import defaults from './defaults';
 import './styles/bootstrap/css/bootstrap.min.css';
 import './styles/custom.css';
 
+console.log('===creating store===');
 const store = createStore(
 	reducers,
 	defaults,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 const rootElement = document.getElementById('root');
-
 render(
 	<Provider store={store} >
 		<App store={store}/>

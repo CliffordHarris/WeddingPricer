@@ -1,14 +1,14 @@
 import React from 'react';
 
-const ButtonComponent = ({id, text, onClick}) => {
+const ButtonComponent = ({id, buttonText, onClick}) => {
 	return (
     <button
 			id={id}
-			placeholder={text}
+			placeholder={buttonText}
 			className='btn btn-default'
 			onClick={onClick}
 		>
-      {text}
+      {buttonText}
     </button>
 	)
 };
@@ -18,9 +18,9 @@ const {
 	string, func
 } = React.PropTypes;
 
-ButtonComponent.contextTypes = {
+ButtonComponent.conbuttonTextTypes = {
 	onClick: func,
-	text: string,
+	buttonText: string,
 	className: string
 };
 

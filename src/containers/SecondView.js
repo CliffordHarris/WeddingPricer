@@ -1,6 +1,7 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
-import {findDOMNode} from 'react-dom';
-import TweenMax from 'gsap';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as Actions from '../actions';
 
 import ButtonComponent from '../components/buttonComponent';
 
@@ -11,14 +12,10 @@ const SecondView = ({actions}) => {
 	return{
 		componentWillEnter (callback) {
 			console.log(callback);
-			const el = findDOMNode(this);
-			TweenMax.fromTo(el, 1.0, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
 		},
 
 		componentWillLeave (callback) {
 			console.log(callback);
-			const el = findDOMNode(this);
-			TweenMax.fromTo(el, 1.0, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
 		},
 
 		render () {
@@ -27,7 +24,7 @@ const SecondView = ({actions}) => {
 					<h1>Second View</h1>
 					<ButtonComponent
 						id='main_view'
-						text='Load Main'
+						buttonText='Load Main'
 						onClick={()=>actions.loadMainView()}
 					/>
 				</div>
@@ -37,4 +34,26 @@ const SecondView = ({actions}) => {
 	}
 };
 
-export default SecondView;
+// Type checking
+const{
+		object, func
+} = React.PropTypes;
+
+SecondView.contextTypes = {
+	store: object,
+	actions: func
+};
+
+// Map the state to props.
+const mapStateToProps = (state) => ({ ...state });
+
+// Map the actions to props.
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(Actions, dispatch)
+});
+
+// Connect the component the Redux store.
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SecondView);
