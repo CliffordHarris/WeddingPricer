@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "react-flip-move": "^2.9.1",
-    "react-motion": "^0.4.7",
     "react-scripts": "0.8.1"
   },
   "dependencies": {
     "react": "^15.4.1",
+    "react-anime": "^0.3.4",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0"

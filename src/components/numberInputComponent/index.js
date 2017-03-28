@@ -14,7 +14,8 @@ const NumberInputComponent = ({labelText, onChange, count, inputType}) => {
         <input
           onChange={onChange}
           type={inputType}
-          min='0'/>
+          min='1'
+        />
       </label>
     </div>
   );

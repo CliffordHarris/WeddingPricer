@@ -5,6 +5,7 @@ export default (store, action) => {
 	switch (action.type) {
 
 		case Constants.SET_MY_NUMBER:
+		console.log('reducer SET_MY_NUMBER', action);
 			return Object.assign({}, store, {
 					UserInput: {
 						...store.UserInput,
@@ -13,6 +14,7 @@ export default (store, action) => {
       });
 
 		case Constants.LOAD_MAIN_VIEW:
+		console.log('reducer LOAD_MAIN_VIEW');
 			return Object.assign({}, store, {
 				UIState:{
 					...store.UIState,
@@ -21,6 +23,7 @@ export default (store, action) => {
 			});
 
 		case Constants.LOAD_SECOND_VIEW:
+		console.log('reducer LOAD_SECOND_VIEW');
 			return Object.assign({}, store, {
 				UIState:{
 					...store.UIState,
@@ -29,7 +32,7 @@ export default (store, action) => {
 			});
 
 		default:
-			console.log('default store');
+			console.log('reducer default');
 			return Object.assign({}, store, {
 					UIState: {
 						...store.UIState,

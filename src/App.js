@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 import AnimatedContainer from './containers/AnimatedContainer';
 
-const App = ({currentView, store}) => {
+const App = ({store}) => {
 	console.log('currentView is: ', store.getState().UIState.currentView);
 	return (
 		<div id="app">
@@ -13,19 +13,18 @@ const App = ({currentView, store}) => {
 
 // Type checking
 const{
-		object, string
+		object
 } = React.PropTypes;
 
 App.contextTypes = {
 	store: object
 };
-App.propTypes = {
-	currentView: string
-};
 
 // Map the state to props.
-const mapStateToProps = (state) => ({ ...state });
+// const mapStateToProps = (state) => ({ ...state });
 // Connect the component the Redux store.
-export default connect(
-  mapStateToProps
-)(App);
+// export default connect(
+//   mapStateToProps
+// )(App);
+
+export default App;
